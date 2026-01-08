@@ -22,16 +22,11 @@ jobs:
         run: npm install
 
       - name: Set environment variables
-        run: echo "VITE_PROD=false" >> $GITHUB_ENV
-
-      - name: Build project
-        run: npm run build
-
-      - name: Start dev server
-        run: npm run dev &
+        run: echo "VITE_PROD=true" >> $GITHUB_ENV
 
       - name: Run Cypress tests
         uses: cypress-io/github-action@v6
         with:
           browser: chrome
-          wait-on: "http://localhost:5173/react-trial/#/"
+          start: npm run dev
+          wait-on: http://localhost:5173/react-trial
