@@ -1,0 +1,32 @@
+name: Deploy to GitHub Pages
+
+on:
+  workflow_run:
+    workflows: ["Cypress Tests"]
+    branches: ["main"]
+    types:
+      - completed
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Set production environment
+        run: echo "VITE_PROD=true" >> $GITHUB_ENV
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        run: npm run deploy
