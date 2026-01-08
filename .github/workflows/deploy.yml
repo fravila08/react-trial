@@ -28,14 +28,11 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Configure GitHub token for gh-pages
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Deploy to GitHub Pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm run deploy
+        run: |
+          git config --global user.email "fr4v1l4@gmail.com"
+          git config --global user.name "fravila08"
+          REPO="https://x-access-token:${GITHUB_TOKEN}@github.com/fravila08/netflix-clone.git"
+          npm run deploy
