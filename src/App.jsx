@@ -23,7 +23,7 @@ function App() {
 
   return (
     <>
-      <h1>Pokemon Cards</h1>
+      <h1>Pokemon Cards Update</h1>
       <nav>
         <Link to="/">Home</Link> | <Link to="/about">About</Link>
       </nav>
