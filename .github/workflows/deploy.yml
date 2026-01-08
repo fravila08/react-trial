@@ -35,4 +35,4 @@ jobs:
           git config --global user.email "fr4v1l4@gmail.com"
           git config --global user.name "fravila08"
           REPO="https://x-access-token:${GITHUB_TOKEN}@github.com/fravila08/netflix-clone.git"
-          npm run deploy
+          npx gh-pages -d dist -r $REPO
